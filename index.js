@@ -57,3 +57,31 @@ app.post("/registro", (req, res) => {
     });
 });
 
+/*
+========================================
+LOGIN
+========================================
+*/
+app.post("/login", (req, res) => {
+
+    // Obtenemos datos enviados
+    const { correo, contraseña } = req.body;
+
+    // Buscamos usuario
+    const usuario = usuarios.find(
+        user =>
+            user.correo === correo &&
+            user.contraseña === contraseña
+    );
+
+    // Validamos autenticación
+    if (usuario) {
+        res.json({
+            mensaje: "autenticación satisfactoria"
+        });
+    } else {
+        res.status(401).json({
+            mensaje: "error de autenticación"
+        });
+    }
+}); 
