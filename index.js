@@ -85,3 +85,8 @@ app.post("/login", (req, res) => {
         });
     }
 }); 
+
+// Encendemos servidor
+app.listen(PORT, () => {
+    console.log(`Servidor funcionando en puerto ${PORT}`);
+});
